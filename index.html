@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel 3D - @programador.cs</title>
+    <link rel="stylesheet" href="./estilos.css">
+</head>
+
+<body>
+    <div class="login-box" id="login-box">
+        <p>Login</p>
+        <form id="login-form">
+            <div class="user-box">
+                <input required name="username" type="text">
+                <label>Usuario</label>
+            </div>
+            <div class="user-box">
+                <input required name="password" type="password">
+                <label>Contraseña</label>
+            </div>
+            <button type="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Submit
+            </button>
+        </form>
+    </div>
+
+    <div class="popup" id="popup1" style="display: none;">
+        <p>Hice esto de todo corazón, espero que te guste. Te quiero mi amor, eres lo mejor. ¡Feliz cumpleaños!</p>
+        <button onclick="showNextPopup()">Siguiente</button>
+    </div>
+
+    <div class="popup" id="popup2" style="display: none;">
+        <p>Disfruta de mi regalo.</p>
+        <button onclick="showCarousel()">Siguiente</button>
+    </div>
+
+    <div id="confetti" style="display: none;">
+        <img src="https://media.giphy.com/media/3o6ZtmwVlQvOH3Ah0c/source.gif" alt="Torta" id="cake-gif">
+        <h2 class="happy-birthday">¡FELIZ CUMPLE AMOOOR!</h2>
+    </div>
+
+    <div class="conteudo__geral" id="carousel-container" style="display: none;">
+        <h1 class="birthday-message">¡Feliz Cumpleaños Nayelhi!</h1>
+        <div class="container">
+            <div class="container-carrossel">
+                <div class="carrossel">
+                    <div class="carrossel-item">
+                        <img src="imagenes/imagen1.jpeg" alt="Imagen 1">
+                    </div>
+                    <div class="carrossel-item">
+                        <img src="imagenes/imagen2.jpeg" alt="Imagen 2">
+                    </div>
+                    <div class="carrossel-item">
+                        <img src="imagenes/imagen3.jpeg" alt="Imagen 3">
+                    </div>
+                    <div class="carrossel-item">
+                        <img src="imagenes/imagen4.jpeg" alt="Imagen 4">
+                    </div>
+                    <div class="carrossel-item">
+                        <img src="imagenes/imagen5 (2).jpeg" alt="Imagen 5">
+                    </div>
+                    <div class="carrossel-item">
+                        <img src="imagenes/imagen6.jpeg" alt="Imagen 6">
+                    </div>
+                    <div class="carrossel-item">
+                        <img src="imagenes/imagen7.jpeg" alt="Imagen 7">
+                    </div>
+                    <div class="carrossel-item">
+                        <img src="imagenes/imagen8.jpeg" alt="Imagen 8">
+                    </div>
+                    <div class="carrossel-item">
+                        <img src="imagenes/imagen9.jpeg" alt="Imagen 9">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="showFinalMessage()" id="exit-button" class="exit-button" style="display: none;">Salir</button>
+    </div>
+
+    <div class="final-message" id="final-message" style="display: none;">
+        <div class="message-content">
+            <p>Espero que te haya gustado este fue mi hermoso regalo te quiero con mi vida mi amor</p>
+            <img src="imagenes/imagen10.jpeg" alt="Imagen final" class="final-image">
+        </div>
+        <audio id="final-song" src="musica/cancion 2 La mujer que bota Fuego.mp4" autoplay></audio>
+    </div>
+
+    <!-- Cartas en las esquinas (sobres inicialmente) -->
+    <div class="envelope top-left" onclick="showCard('card1')" style="display: none;">
+        📩
+        <img src="https://3.bp.blogspot.com/-WcltZjpfQBY/WIdovdxAR3I/AAAAAAAGqz0/PTEZbh7GHusiDd-shCmOZ03ZuLuueBm_QCLcB/s1600/krasnyj-bant.png" alt="Lazo" class="lazo-image">
+    </div>
+    <div class="envelope top-right" onclick="showCard('card2')" style="display: none;">
+        📩
+        <img src="https://3.bp.blogspot.com/-WcltZjpfQBY/WIdovdxAR3I/AAAAAAAGqz0/PTEZbh7GHusiDd-shCmOZ03ZuLuueBm_QCLcB/s1600/krasnyj-bant.png" alt="Lazo" class="lazo-image">
+    </div>
+    <div class="envelope bottom-left" onclick="showCard('card3')" style="display: none;">
+        📩
+        <img src="https://3.bp.blogspot.com/-WcltZjpfQBY/WIdovdxAR3I/AAAAAAAGqz0/PTEZbh7GHusiDd-shCmOZ03ZuLuueBm_QCLcB/s1600/krasnyj-bant.png" alt="Lazo" class="lazo-image">
+    </div>
+    <div class="envelope bottom-right" onclick="showCard('card4')" style="display: none;">
+        📩
+        <img src="https://3.bp.blogspot.com/-WcltZjpfQBY/WIdovdxAR3I/AAAAAAAGqz0/PTEZbh7GHusiDd-shCmOZ03ZuLuueBm_QCLcB/s1600/krasnyj-bant.png" alt="Lazo" class="lazo-image">
+    </div>
+
+    <!-- Contenido de las cartas -->
+    <div id="card1" class="card-content" style="display: none;">
+        <h2>Carta 1</h2>
+        <p>Querida Nayelhi, eres la mejor. Eres lo mejor que me ha pasado y estoy agradecido por cada momento contigo. ¡Feliz cumpleaños, mi amor! Espero que tengas un día maravilloso y lleno de alegría. Cada día le agradezco a Dios por haberte conocido y haber tenido el privilegio de estar con la chica que me vuelve loco. ¡Te amo!</p>
+        <img src="imagenes/imagen1.jpeg" alt="Imagen 1" class="corner-image">
+        <img src="https://i.pinimg.com/originals/d2/68/13/d2681340cc8bad0a0e11ee17be2b29c3.jpg" alt="Torta" class="torta-image">
+        <button onclick="hideCard('card1')">Salir</button>
+        <audio id="card1-song" src="musica/cancion1 Gone Gone.mp4" autoplay></audio>
+    </div>
+    <div id="card2" class="card-content" style="display: none;">
+        <h2>Carta 2</h2>
+        <p>Mi amor, desde que entraste en mi vida, todo ha sido increíble. Antes no sabía lo que era escribir una carta, pero mira, te hice 4 cartas por tu cumpleaños porque quiero que sepas que por ti daría mi vida entera sin pensarlo con tal de ver una sonrisa en esa carita hermosa. Eres una persona maravillosa y cada día a tu lado es un regalo. ¡Feliz cumpleaños! Que todos tus sueños se hagan realidad. ¡Te quiero muchísimo!</p>
+        <img src="imagenes/imagen2.jpeg" alt="Imagen 2" class="corner-image">
+        <img src="https://i.pinimg.com/originals/d2/68/13/d2681340cc8bad0a0e11ee17be2b29c3.jpg" alt="Torta" class="torta-image">
+        <button onclick="hideCard('card2')">Salir</button>
+        <audio id="card2-song" src="musica/cancion3 No hay nadie mas.mp3" autoplay></audio>
+    </div>
+    <div id="card3" class="card-content" style="display: none;">
+        <h2>Carta 3</h2>
+        <p>Feliz cumpleaños, mi amor. Esta es la tercera carta, pero siento que las palabras se me quedan cortas para felicitar a la persona que más quiero. Eres la persona más especial que conozco y cada momento contigo es un tesoro. Gracias por ser mi compañera, mi amiga y mi amor. Que este día esté lleno de amor y felicidad. ¡Te adoro!</p>
+        <img src="imagenes/imagen3.jpeg" alt="Imagen 3" class="corner-image">
+        <img src="https://i.pinimg.com/originals/d2/68/13/d2681340cc8bad0a0e11ee17be2b29c3.jpg" alt="Torta" class="torta-image">
+        <button onclick="hideCard('card3')">Salir</button>
+        <audio id="card3-song" src="musica/cancion4 Bajo el agua.mp3" autoplay></audio>
+    </div>
+    <div id="card4" class="card-content" style="display: none;">
+        <h2>Carta 4</h2>
+        <p>Mi querida Nayelhi, esta es la última carta por tu cumpleaños. Solo espero que te esté gustando mi sorpresa. Decir que te quiero es algo que se me queda corto porque me gusta ver cómo sonríes con cada cosa que se me ocurre, cómo huele tu perfume, cómo eres de valiente y admiro todo eso de ti. No me cansaré de decirlo: no importa la distancia o el tiempo, yo siempre encontraré la forma de estar para ti, sea como sea y de la manera que sea, porque amo cada detalle. Amo cada viaje que hago solo para ver esos ojitos tan hermosos que hacen que mis días se iluminen y sean los mejores. Por eso, en este día tan especial, quiero recordarte cuánto te aprecio y te valoro. Eres una luz en mi vida y no puedo imaginar mi mundo sin ti. ¡Feliz cumpleaños! Que la alegría y el amor te rodeen siempre. ¡Te amo con todo mi corazón!</p>
+        <img src="imagenes/imagen4.jpeg" alt="Imagen 4" class="corner-image">
+        <img src="https://i.pinimg.com/originals/d2/68/13/d2681340cc8bad0a0e11ee17be2b29c3.jpg" alt="Torta" class="torta-image">
+        <button onclick="hideCard('card4')">Salir</button>
+        <audio id="card4-song" src="musica/cancion5 si pudiera.mp3" autoplay></audio>
+    </div>
+
+    <audio id="song-login" src="musica/cancion 2 La mujer que bota Fuego.mp4" loop></audio>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
